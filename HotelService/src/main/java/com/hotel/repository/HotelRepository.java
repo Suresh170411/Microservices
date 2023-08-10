@@ -11,4 +11,6 @@ import com.hotel.model.Hotel;
 public interface HotelRepository extends JpaRepository<Hotel, String> {
 
     public Optional<Hotel> findByName(String name);
+
+    public Optional<Hotel> findByLocation(String name);
 }
