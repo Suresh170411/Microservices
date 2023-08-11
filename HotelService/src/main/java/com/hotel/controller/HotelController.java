@@ -1,5 +1,7 @@
 package com.hotel.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,5 +31,10 @@ public class HotelController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Hotel> getHotelByIdHandler(@PathVariable String id) throws HotelException{
 		return new ResponseEntity<Hotel>(hotelService.getHotelById(id), HttpStatus.OK);
+	}
+	
+	@GetMapping("/all")
+	public ResponseEntity<List<Hotel>> getAllHotelsHandler() throws HotelException{
+		return new ResponseEntity<List<Hotel>>(hotelService.getHotelList(), HttpStatus.OK);
 	}
 }

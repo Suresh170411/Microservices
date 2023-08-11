@@ -17,20 +17,21 @@ public class HotelServiceImpl implements HotelService{
 	
 	@Override
 	public Hotel addHotel(Hotel hotel) {
-		// TODO Auto-generated method stub
-		return null;
+		return hotelRepository.save(hotel);
 	}
 
 	@Override
 	public Hotel getHotelById(String id) throws HotelException {
-		// TODO Auto-generated method stub
-		return null;
+		return hotelRepository.findById(id).orElseThrow(()-> new HotelException("No hotel found with this id"));
 	}
 
 	@Override
 	public List<Hotel> getHotelList() throws HotelException {
-		// TODO Auto-generated method stub
-		return null;
+		 if (hotelRepository.findAll().isEmpty()) {
+			 throw new HotelException("No hotels found!");
+		 }else {
+			 return hotelRepository.findAll();
+		 }
 	}
 
 }
